@@ -1,0 +1,8 @@
+.bundle
+.github
+spec
+vendor
+.rspec
+compose.yml
+Dockerfile
+README.md
