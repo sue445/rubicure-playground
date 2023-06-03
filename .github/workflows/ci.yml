@@ -101,3 +101,48 @@ jobs:
           icon_emoji: ":octocat:"
           url: ${{ secrets.SLACK_WEBHOOK }}
           token: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy_to_cloud_run:
+    needs:
+      - build_and_push
+      - test
+
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+
+    runs-on: ubuntu-latest
+
+    environment: production
+    concurrency: production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - id: auth
+        name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ env.SERVICE_ACCOUNT_EMAIL }}
+
+      - name: Replace __GITHUB_SHA__ in .github/cloud_run-service.yml
+        run: |
+          sed -i "s/__GITHUB_SHA__/${GITHUB_SHA}/g" .github/cloud_run-service.yml
+          grep "docker.pkg.dev" .github/cloud_run-service.yml
+
+      - id: deploy
+        uses: google-github-actions/deploy-cloudrun@v1
+        with:
+          region: asia-northeast1
+          metadata: .github/cloud_run-service.yml
+
+      - name: Slack Notification
+        uses: lazy-actions/slatify@master
+        if: always()
+        continue-on-error: true
+        with:
+          job_name: '*deploy_to_cloud_run*'
+          type: ${{ job.status }}
+          icon_emoji: ":octocat:"
+          url: ${{ secrets.SLACK_WEBHOOK }}
+          token: ${{ secrets.GITHUB_TOKEN }}
