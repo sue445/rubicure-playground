@@ -3,6 +3,7 @@
 source "https://rubygems.org"
 
 gem "puma"
+gem "rubicure"
 gem "sinatra"
 
 group :test do
