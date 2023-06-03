@@ -1,4 +1,28 @@
 html
   head
     title rubicure-playground
+    script src="https://code.jquery.com/jquery-3.7.0.min.js"
   body
+    css:
+      #input, #output {
+        width: 100%;
+      }
+
+    button#run Run
+    textarea#input rows=10
+    textarea#output rows=10 readonly=true
+
+  javascript:
+    $("#run").click(() => {
+      $.ajax({
+        url: "/run",
+        type: "POST",
+        dataType: "json",
+        data: {
+          input: $("#input").val()
+        }
+      }).done((data) => {
+        console.log(data)
+        $("#output").val(data.output)
+      })
+    })

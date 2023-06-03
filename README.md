@@ -2,7 +2,16 @@
 ## Development
 ```bash
 bundle install
-bundle exec puma -C config/puma.rb
 ```
 
-open http://localhost:8080/play
+```bash
+bundle exec puma -C config/puma.rb
+# open http://localhost:8080/play
+```
+
+or 
+
+```bash
+bundle exec rackup
+# open http://localhost:9292/play
+```
