@@ -46,6 +46,10 @@ GEM
       rack (~> 2.2, >= 2.2.4)
       rack-protection (= 3.0.6)
       tilt (~> 2.0)
+    slim (5.1.1)
+      temple (~> 0.10.0)
+      tilt (>= 2.1.0)
+    temple (0.10.2)
     tilt (2.1.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -60,6 +64,7 @@ DEPENDENCIES
   rspec
   rubicure
   sinatra
+  slim
 
 BUNDLED WITH
    2.4.10
