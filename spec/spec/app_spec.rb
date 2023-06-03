@@ -4,4 +4,10 @@ describe App do
 
     it { should be_ok }
   end
+
+  describe "GET /play" do
+    subject { get "/play" }
+
+    it { should be_ok }
+  end
 end
