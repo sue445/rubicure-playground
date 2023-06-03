@@ -15,3 +15,10 @@ or
 bundle exec rackup
 # open http://localhost:9292/play
 ```
+
+or
+
+```
+docker compose up --build
+# open http://localhost:8080/play
+```
