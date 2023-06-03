@@ -1,7 +1,7 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: rubucure-playground
+  name: rubicure-playground
 spec:
   template:
     metadata:
@@ -13,9 +13,9 @@ spec:
     spec:
       containerConcurrency: 1
       timeoutSeconds: 5
-      serviceAccountName: rubucure-app@rubucure-playground.iam.gserviceaccount.com
+      serviceAccountName: rubicure-app@rubicure-playground.iam.gserviceaccount.com
       containers:
-        - image: asia-northeast1-docker.pkg.dev/rubucure-playground/rubucure-playground/app:sha-__GITHUB_SHA__
+        - image: asia-northeast1-docker.pkg.dev/rubicure-playground/rubicure-playground/app:sha-__GITHUB_SHA__
           ports:
             - name: http1
               containerPort: 8080
