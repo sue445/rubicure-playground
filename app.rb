@@ -13,8 +13,9 @@ class App < Sinatra::Base
   post "/run" do
     input = params[:input]
 
-    # TODO: WIP
-    { output: input }.to_json
+    output = App.run_script(input)
+
+    { output: output }.to_json
   end
 
   # @param [String] code
