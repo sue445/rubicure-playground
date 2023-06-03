@@ -7,6 +7,6 @@ class App < Sinatra::Base
   end
 
   get "/play" do
-    File.read(File.join(__dir__, "views", "play.html"))
+    slim :play
   end
 end
