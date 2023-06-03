@@ -19,6 +19,10 @@ env:
   # e.g. terraform@GCP_PROJECT_ID.iam.gserviceaccount.com
   SERVICE_ACCOUNT_EMAIL: "deployer@rubicure-playground.iam.gserviceaccount.com"
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
