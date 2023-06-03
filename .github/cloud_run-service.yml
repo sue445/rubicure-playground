@@ -11,7 +11,7 @@ spec:
         autoscaling.knative.dev/maxScale: '1'
 
     spec:
-      containerConcurrency: 1
+      containerConcurrency: 10
       timeoutSeconds: 5
       serviceAccountName: rubicure-app@rubicure-playground.iam.gserviceaccount.com
       containers:
@@ -31,8 +31,8 @@ spec:
             #   value: "1"
             # - name: PUMA_MIN_THREADS
             #   value: "1"
-            # - name: PUMA_MAX_THREADS
-            #   value: "5"
+            - name: PUMA_MAX_THREADS
+              value: "10"
 
   traffic:
     - percent: 100
