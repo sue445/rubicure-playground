@@ -5,4 +5,4 @@ bundle install
 bundle exec puma -C config/puma.rb
 ```
 
-open http://localhost:8080/
+open http://localhost:8080/play

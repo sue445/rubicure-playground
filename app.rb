@@ -5,4 +5,8 @@ class App < Sinatra::Base
   get "/" do
     "It works"
   end
+
+  get "/play" do
+    slim :play
+  end
 end
