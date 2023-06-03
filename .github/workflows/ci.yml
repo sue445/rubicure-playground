@@ -14,7 +14,7 @@ on:
 
 env:
   # e.g. projects/123456789/locations/global/workloadIdentityPools/github-actions/providers/github-actions
-  WORKLOAD_IDENTITY_PROVIDER: "projects/573318433420/locations/global/workloadIdentityPools/github-actions/providers/github-actions"
+  WORKLOAD_IDENTITY_PROVIDER: "projects/573318433420/locations/global/workloadIdentityPools/rubicure-playground/providers/github-actions"
 
   # e.g. terraform@GCP_PROJECT_ID.iam.gserviceaccount.com
   SERVICE_ACCOUNT_EMAIL: "deployer@rubicure-playground.iam.gserviceaccount.com"
