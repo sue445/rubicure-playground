@@ -9,4 +9,11 @@ class App < Sinatra::Base
   get "/play" do
     slim :play
   end
+
+  post "/run" do
+    input = params[:input]
+
+    # TODO: WIP
+    { output: input }.to_json
+  end
 end
