@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 gem "puma"
-gem "rubicure"
+gem "rubicure", ">= 3.2.1"
 gem "sentry-ruby"
 gem "sinatra"
 gem "slim"
