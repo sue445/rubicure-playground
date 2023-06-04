@@ -13,6 +13,23 @@ html
     textarea#output rows=10 readonly=true
 
   javascript:
+    function printWithDelay(text, delay) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          let output = $("#output").val();
+          output += text + "\n"
+          $("#output").val(output)
+          resolve();
+        }, delay);
+      });
+    }
+
+    async function printLinesWithDelay(lines, delay) {
+      for (let i = 0; i < lines.length; i++) {
+        await printWithDelay(lines[i], delay);
+      }
+    }
+
     $("#run").click(() => {
       $.ajax({
         url: "/run",
@@ -22,7 +39,8 @@ html
           input: $("#input").val()
         }
       }).done((data) => {
-        console.log(data)
-        $("#output").val(data.output)
+        $("#output").val("");
+        const lines = data.output.split('\n');
+        printLinesWithDelay(lines, 1000);
       })
     })
