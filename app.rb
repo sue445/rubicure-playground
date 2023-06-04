@@ -15,6 +15,7 @@ class App < Sinatra::Base
   end
 
   get "/play" do
+    @input = params[:input]
     slim :play
   end
 
