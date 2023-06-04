@@ -26,12 +26,16 @@ async function printLinesWithDelay(lines, delay) {
 
 $(() => {
   $("#run").click(() => {
+    const input = $("#input").val();
+    const query = "?input=" + encodeURIComponent(input);
+    history.replaceState(null, "", query)
+
     $.ajax({
       url: "/run",
       type: "POST",
       dataType: "json",
       data: {
-        input: $("#input").val()
+        input: input
       }
     }).done((data) => {
       $("#run").prop("disabled", true);
