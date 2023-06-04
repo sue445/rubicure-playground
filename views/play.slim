@@ -4,8 +4,13 @@ html
     script src="https://code.jquery.com/jquery-3.7.0.min.js"
   body
     css:
-      #input, #output {
+      #input {
         width: 100%;
+      }
+
+      #output {
+        width: 100%;
+        overflow: auto;
       }
 
     button#run Run
@@ -18,7 +23,12 @@ html
         setTimeout(() => {
           let output = $("#output").val();
           output += text + "\n"
-          $("#output").val(output)
+          $("#output").val(output);
+
+          // Scroll to bottom
+          const pos = $("#output")[0].scrollHeight;
+          $("#output").scrollTop(pos);
+
           resolve();
         }, delay);
       });
@@ -26,7 +36,9 @@ html
 
     async function printLinesWithDelay(lines, delay) {
       for (let i = 0; i < lines.length; i++) {
-        await printWithDelay(lines[i], delay);
+        if (lines[i].length > 0) {
+          await printWithDelay(lines[i], delay);
+        }
       }
     }
 
