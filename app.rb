@@ -34,16 +34,18 @@ class App < Sinatra::Base
 
     Rubicure::Girl.sleep_sec = 0
 
-    code.each_line do |line|
-      line = line.strip
-      next if line.empty?
+    Object.new.instance_eval do
+      code.each_line do |line|
+        line = line.strip
+        next if line.empty?
 
-      puts "> #{line}"
-      eval(line)
-      puts ""
+        puts "> #{line}"
+        eval(line)
+        puts ""
+      end
+
+      mock_stdout.string
     end
-
-    mock_stdout.string
 
   ensure
     $stdout = STDOUT

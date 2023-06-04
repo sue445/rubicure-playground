@@ -42,20 +42,45 @@ RSpec.describe App do
   describe ".run_script" do
     subject { App.run_script(code) }
 
-    let(:code) do
-      <<~RUBY
-        puts Precure.delicious_party.title
-      RUBY
+    context "Precure.delicious_party.title" do
+      let(:code) do
+        <<~RUBY
+          puts Precure.delicious_party.title
+        RUBY
+      end
+
+      let(:output) do
+        <<~TEXT
+          > puts Precure.delicious_party.title
+          デリシャスパーティ♡プリキュア
+
+        TEXT
+      end
+
+      it { should eq output }
     end
 
-    let(:output) do
-      <<~TEXT
-        > puts Precure.delicious_party.title
-        デリシャスパーティ♡プリキュア
+    context "Cure.peace.transform!" do
+      let(:code) do
+        <<~RUBY
+          Cure.peace.transform!
+        RUBY
+      end
 
-      TEXT
+      let(:output) do
+        <<~TEXT
+          > Cure.peace.transform!
+          (レディ？)
+          プリキュア・スマイルチャージ！
+          (ゴー！ゴー！レッツ・ゴー！ピース！！)
+          ピカピカピカリンジャンケンポン！ キュアピース！
+          5つの光が導く未来！
+          輝け！スマイルプリキュア！
+
+        TEXT
+      end
+
+      it { should eq output }
     end
-
-    it { should eq output }
   end
 end
