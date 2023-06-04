@@ -18,7 +18,7 @@ bundle exec rackup
 
 or
 
-```
+```bash
 docker compose up --build
 # open http://localhost:8080/play
 ```
