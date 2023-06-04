@@ -4,6 +4,7 @@ source "https://rubygems.org"
 
 gem "puma"
 gem "rubicure"
+gem "sentry-ruby"
 gem "sinatra"
 gem "slim"
 

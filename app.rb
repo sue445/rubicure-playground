@@ -2,6 +2,14 @@ ENV["RACK_ENV"] ||= "development"
 Bundler.require(:default, ENV["RACK_ENV"])
 
 class App < Sinatra::Base
+  use Sentry::Rack::CaptureExceptions
+
+  configure do
+    Sentry.init do |config|
+      config.enabled_environments = %w[production]
+    end
+  end
+
   get "/" do
     "It works"
   end

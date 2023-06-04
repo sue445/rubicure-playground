@@ -33,6 +33,16 @@ spec:
             #   value: "1"
             - name: PUMA_MAX_THREADS
               value: "10"
+            - name: SENTRY_RELEASE
+              value: "__GITHUB_SHA__"
+
+            # Get credentials from SecretManager
+            # c.f. https://cloud.google.com/run/docs/configuring/secrets
+            - name: SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: SENTRY_DSN
 
   traffic:
     - percent: 100
