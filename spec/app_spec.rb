@@ -24,10 +24,9 @@ RSpec.describe App do
     end
 
     let(:output) do
-      <<~TEXT
+      <<~TEXT.strip
         > puts Precure.delicious_party.title
         デリシャスパーティ♡プリキュア
-
       TEXT
     end
 
@@ -50,10 +49,9 @@ RSpec.describe App do
       end
 
       let(:output) do
-        <<~TEXT
+        <<~TEXT.strip
           > puts Precure.delicious_party.title
           デリシャスパーティ♡プリキュア
-
         TEXT
       end
 
@@ -68,7 +66,7 @@ RSpec.describe App do
       end
 
       let(:output) do
-        <<~TEXT
+        <<~TEXT.strip
           > Cure.peace.transform!
           (レディ？)
           プリキュア・スマイルチャージ！
@@ -76,7 +74,6 @@ RSpec.describe App do
           ピカピカピカリンジャンケンポン！ キュアピース！
           5つの光が導く未来！
           輝け！スマイルプリキュア！
-
         TEXT
       end
 

@@ -18,7 +18,7 @@ html
     textarea#output rows=10 readonly=true
 
   javascript:
-    function printWithDelay(text, delay) {
+    function printWithDelay(text, delay, is_final_line) {
       return new Promise((resolve) => {
         setTimeout(() => {
           let output = $("#output").val();
@@ -29,6 +29,9 @@ html
           const pos = $("#output")[0].scrollHeight;
           $("#output").scrollTop(pos);
 
+          if (is_final_line) {
+            $("#run").prop("disabled", false);
+          }
           resolve();
         }, delay);
       });
@@ -36,9 +39,8 @@ html
 
     async function printLinesWithDelay(lines, delay) {
       for (let i = 0; i < lines.length; i++) {
-        if (lines[i].length > 0) {
-          await printWithDelay(lines[i], delay);
-        }
+        const is_final_line = i == lines.length - 1
+        await printWithDelay(lines[i], delay, is_final_line);
       }
     }
 
@@ -51,6 +53,7 @@ html
           input: $("#input").val()
         }
       }).done((data) => {
+        $("#run").prop("disabled", true);
         $("#output").val("");
         const lines = data.output.split('\n');
         printLinesWithDelay(lines, 1000);

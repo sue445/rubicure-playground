@@ -44,7 +44,7 @@ class App < Sinatra::Base
         puts ""
       end
 
-      mock_stdout.string
+      mock_stdout.string.strip
     end
 
   ensure
