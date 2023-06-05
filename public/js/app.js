@@ -1,13 +1,14 @@
 function printWithDelay(text, delay, is_final_line) {
+  const outputEditor = ace.edit("output");
+
   return new Promise((resolve) => {
     setTimeout(() => {
-      let output = $("#output").val();
+      let output = outputEditor.getValue();
       output += text + "\n"
-      $("#output").val(output);
+      outputEditor.setValue(output);
 
       // Scroll to bottom
-      const pos = $("#output")[0].scrollHeight;
-      $("#output").scrollTop(pos);
+      outputEditor.gotoLine(outputEditor.session.getLength());
 
       if (is_final_line) {
         $("#run").prop("disabled", false);
@@ -25,8 +26,22 @@ async function printLinesWithDelay(lines, delay) {
 }
 
 $(() => {
+  const inputEditor = ace.edit("input");
+  inputEditor.setTheme("ace/theme/monokai");
+  inputEditor.session.setMode("ace/mode/ruby");
+  inputEditor.setFontSize(14);
+  inputEditor.renderer.setOption("showLineNumbers", false);
+  inputEditor.setValue($("#param_input").val());
+
+  const outputEditor = ace.edit("output");
+  outputEditor.setTheme("ace/theme/monokai");
+  outputEditor.session.setMode("ace/mode/ruby");
+  outputEditor.setFontSize(14);
+  outputEditor.renderer.setOption("showLineNumbers", false);
+  outputEditor.setReadOnly(true);
+
   $("#run").click(() => {
-    const input = $("#input").val();
+    const input = inputEditor.getValue();
     const query = "?input=" + encodeURIComponent(input);
     history.replaceState(null, "", query)
 
@@ -39,7 +54,8 @@ $(() => {
       }
     }).done((data) => {
       $("#run").prop("disabled", true);
-      $("#output").val("");
+
+      outputEditor.setValue("");
       const lines = data.output.split('\n');
       printLinesWithDelay(lines, 1000);
     })

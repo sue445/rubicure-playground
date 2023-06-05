@@ -2,10 +2,14 @@ html
   head
     title rubicure-playground
     script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js"
     script type="text/javascript" src="/js/app.js"
     link type="text/css" rel="stylesheet" href="/css/app.css"
   body
+    span input
     button#run Run
-    textarea#input rows=10
-      = @input
-    textarea#output rows=10 readonly=true
+    #input
+    span output
+    #output
+
+    input#param_input type="hidden" value=@input
