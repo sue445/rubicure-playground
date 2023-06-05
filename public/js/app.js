@@ -30,14 +30,12 @@ $(() => {
   inputEditor.setTheme("ace/theme/monokai");
   inputEditor.session.setMode("ace/mode/ruby");
   inputEditor.setFontSize(14);
-  inputEditor.renderer.setOption("showLineNumbers", false);
   inputEditor.setValue($("#param_input").val());
 
   const outputEditor = ace.edit("output");
   outputEditor.setTheme("ace/theme/monokai");
   outputEditor.session.setMode("ace/mode/ruby");
   outputEditor.setFontSize(14);
-  outputEditor.renderer.setOption("showLineNumbers", false);
   outputEditor.setReadOnly(true);
 
   $("#run").click(() => {
