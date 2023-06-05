@@ -1,3 +1,5 @@
+# c.f. https://cloud.google.com/run/docs/reference/yaml/v1
+
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
@@ -9,6 +11,7 @@ spec:
         run.googleapis.com/client-name: cloud-console
         autoscaling.knative.dev/minScale: '0'
         autoscaling.knative.dev/maxScale: '1'
+        run.googleapis.com/execution-environment: gen2
 
     spec:
       containerConcurrency: 10
