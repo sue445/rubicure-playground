@@ -17,6 +17,7 @@ class App < Sinatra::Base
   get "/play" do
     @input = params[:input]
     @font_size = params[:font_size] || 14
+    @readonly = params[:readonly]
 
     headers(
       {
