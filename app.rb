@@ -18,6 +18,7 @@ class App < Sinatra::Base
     @input = params[:input]
     @font_size = params[:font_size] || 14
     @readonly = params[:readonly]
+    @editor_height = params[:editor_height]
 
     headers(
       {
