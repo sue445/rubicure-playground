@@ -26,21 +26,23 @@ async function printLinesWithDelay(lines, delay) {
 }
 
 $(() => {
+  const fontSize = $("#param_font_size").val();
+
   const inputEditor = ace.edit("input");
   inputEditor.setTheme("ace/theme/monokai");
   inputEditor.session.setMode("ace/mode/ruby");
-  inputEditor.setFontSize(14);
+  inputEditor.setFontSize(fontSize);
   inputEditor.setValue($("#param_input").val());
 
   const outputEditor = ace.edit("output");
   outputEditor.setTheme("ace/theme/monokai");
   outputEditor.session.setMode("ace/mode/ruby");
-  outputEditor.setFontSize(14);
+  outputEditor.setFontSize(fontSize);
   outputEditor.setReadOnly(true);
 
   $("#run").click(() => {
     const input = inputEditor.getValue();
-    const query = "?input=" + encodeURIComponent(input);
+    const query = `?font_size=${fontSize}&input=${encodeURIComponent(input)}`;
     history.replaceState(null, "", query)
 
     $.ajax({

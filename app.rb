@@ -16,6 +16,13 @@ class App < Sinatra::Base
 
   get "/play" do
     @input = params[:input]
+    @font_size = params[:font_size] || 14
+
+    headers(
+      {
+        "Content-Security-Policy" => "frame-ancestors 'self' http://* https://* http://localhost:* https://sue445.github.io",
+      }
+    )
     slim :play
   end
 
