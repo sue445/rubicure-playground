@@ -25,31 +25,45 @@ async function printLinesWithDelay(lines, delay) {
   }
 }
 
+function createEditor(params) {
+  const id = params.id;
+  const height = params.height;
+  const fontSize = params.fontSize;
+  const readonly = params.readonly;
+  const text = params.text;
+
+  const editor = ace.edit(id);
+  editor.setTheme("ace/theme/monokai");
+  editor.session.setMode("ace/mode/ruby");
+  editor.setFontSize(fontSize);
+  editor.setReadOnly(readonly);
+
+  if (text) {
+    editor.setValue(text);
+  }
+
+  if (height != "") {
+    editor.container.style.height = height;
+    editor.resize();
+  }
+
+  return editor;
+}
+
 $(() => {
   const fontSize = $("#param_font_size").val();
   const readonly = $("#param_readonly").val() != "";
   const editorHeight = $("#param_editor_height").val();
 
-  const inputEditor = ace.edit("input");
-  inputEditor.setTheme("ace/theme/monokai");
-  inputEditor.session.setMode("ace/mode/ruby");
-  inputEditor.setFontSize(fontSize);
-  inputEditor.setValue($("#param_input").val());
-  inputEditor.setReadOnly(readonly);
+  const inputEditor = createEditor({
+    id: "input", height: editorHeight, fontSize: fontSize,
+    readonly: readonly, text: $("#param_input").val(),
+  });
 
-  const outputEditor = ace.edit("output");
-  outputEditor.setTheme("ace/theme/monokai");
-  outputEditor.session.setMode("ace/mode/ruby");
-  outputEditor.setFontSize(fontSize);
-  outputEditor.setReadOnly(true);
-
-  if (editorHeight != "") {
-    inputEditor.container.style.height = editorHeight;
-    inputEditor.resize();
-
-    outputEditor.container.style.height = editorHeight;
-    outputEditor.resize();
-  }
+  const outputEditor = createEditor({
+    id: "output", height: editorHeight, fontSize: fontSize,
+    readonly: true,
+  });
 
   $("#run").click(() => {
     const input = inputEditor.getValue();
