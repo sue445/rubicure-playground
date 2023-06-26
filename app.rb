@@ -23,6 +23,8 @@ class App < Sinatra::Base
     headers(
       {
         "Content-Security-Policy" => "frame-ancestors 'self' http://* https://* http://localhost:* https://sue445.github.io",
+        "Cross-Origin-Resource-Policy" => "cross-origin",
+        "Cross-Origin-Embedder-Policy" => "credentialless",
       }
     )
     slim :play
