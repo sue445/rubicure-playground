@@ -19,14 +19,14 @@ RSpec.describe App do
 
     let(:input) do
       <<~RUBY
-        puts Precure.delicious_party.title
+        Precure.delicious_party.title
       RUBY
     end
 
     let(:output) do
       <<~TEXT.strip
-        > puts Precure.delicious_party.title
-        デリシャスパーティ♡プリキュア
+        > Precure.delicious_party.title
+        #=> デリシャスパーティ♡プリキュア
       TEXT
     end
 
@@ -44,14 +44,14 @@ RSpec.describe App do
     context "Precure.delicious_party.title" do
       let(:code) do
         <<~RUBY
-          puts Precure.delicious_party.title
+          Precure.delicious_party.title
         RUBY
       end
 
       let(:output) do
         <<~TEXT.strip
-          > puts Precure.delicious_party.title
-          デリシャスパーティ♡プリキュア
+          > Precure.delicious_party.title
+          #=> デリシャスパーティ♡プリキュア
         TEXT
       end
 
@@ -74,6 +74,7 @@ RSpec.describe App do
           ピカピカピカリンジャンケンポン！ キュアピース！
           5つの光が導く未来！
           輝け！スマイルプリキュア！
+          #=> キュアピース
         TEXT
       end
 

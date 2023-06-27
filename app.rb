@@ -52,7 +52,8 @@ class App < Sinatra::Base
         next if line.empty?
 
         puts "> #{line}"
-        eval(line)
+        ret = eval(line)
+        puts "#=> #{ret}".strip
         puts ""
       end
 
