@@ -52,7 +52,7 @@ function createEditor(params) {
 
 $(() => {
   const fontSize = $("#param_font_size").val();
-  const readonly = $("#param_readonly").val() != "";
+  const readonly = $("#param_readonly").val() == "true";
   const editorHeight = $("#param_editor_height").val();
 
   const inputEditor = createEditor({
