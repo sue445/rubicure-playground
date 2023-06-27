@@ -51,14 +51,13 @@ function createEditor(params) {
 }
 
 $(() => {
-  const params = new URLSearchParams(window.location.search)
-  const fontSize = Number(params.get("font_size") || 14);
-  const readonly = params.get("readonly") == "true";
-  const editorHeight = params.get("editor_height");
+  const fontSize = $("#param_font_size").val();
+  const readonly = $("#param_readonly").val() == "true";
+  const editorHeight = $("#param_editor_height").val();
 
   const inputEditor = createEditor({
     id: "input", height: editorHeight, fontSize: fontSize,
-    readonly: readonly, text: params.get("input"),
+    readonly: readonly, text: $("#param_input").val(),
   });
 
   const outputEditor = createEditor({
