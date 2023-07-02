@@ -82,10 +82,12 @@ class App < Sinatra::Base
   # @param error [Exception]
   # @return [String]
   def self.format_backtrace(error)
-    lines = ["#{error.class}: #{error.message}"]
+    backtrace_lines = []
     error.backtrace.each_with_index do |line, index|
-      lines << "#{index + 1}: #{line}"
+      backtrace_lines << "#{index + 1}: #{line}"
     end
+
+    lines = ["#{error.class}: #{error.message}"] + backtrace_lines[0...3]
 
     lines.join("\n")
   end
