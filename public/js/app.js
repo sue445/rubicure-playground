@@ -82,7 +82,8 @@ $(() => {
 
       outputEditor.setValue("");
       const lines = data.output.split('\n');
-      printLinesWithDelay(lines, 1000);
+      const delay = data.is_error ? 0 : 1000;
+      printLinesWithDelay(lines, delay);
     })
   })
 });

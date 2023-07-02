@@ -55,7 +55,8 @@ RSpec.describe App do
         TEXT
       end
 
-      it { should eq output }
+      its([0]) { should eq output }
+      its([1]) { should eq false }
     end
 
     context "Cure.peace.transform!" do
@@ -78,7 +79,19 @@ RSpec.describe App do
         TEXT
       end
 
-      it { should eq output }
+      its([0]) { should eq output }
+      its([1]) { should eq false }
+    end
+
+    context "with error" do
+      let(:code) do
+        <<~RUBY
+          aaaa
+        RUBY
+      end
+
+      its([0]) { should be_start_with %q(NameError: undefined local variable or method `aaaa' for ) }
+      its([1]) { should eq true }
     end
   end
 end
