@@ -55,7 +55,8 @@ RSpec.describe App do
         TEXT
       end
 
-      it { should eq [output, false] }
+      its([0]) { should eq output }
+      its([1]) { should eq false }
     end
 
     context "Cure.peace.transform!" do
@@ -78,7 +79,8 @@ RSpec.describe App do
         TEXT
       end
 
-      it { should eq [output, false] }
+      its([0]) { should eq output }
+      its([1]) { should eq false }
     end
 
     context "with error" do
