@@ -33,9 +33,9 @@ class App < Sinatra::Base
   post "/run" do
     input = params[:input]
 
-    output = App.run_script(input)
+    output, is_error = App.run_script(input)
 
-    { output: output }.to_json
+    { output: output, is_error: is_error }.to_json
   end
 
   # @param [String] code
@@ -57,8 +57,11 @@ class App < Sinatra::Base
         puts ""
       end
 
-      mock_stdout.string.strip
+      [mock_stdout.string.strip, false]
     end
+
+  rescue => error
+    [format_backtrace(error), true]
 
   ensure
     $stdout = STDOUT
@@ -75,4 +78,16 @@ class App < Sinatra::Base
     end
   end
   private_class_method :initialize_rubicure
+
+  # @param error [Exception]
+  # @return [String]
+  def self.format_backtrace(error)
+    lines = ["#{error.class}: #{error.message}"]
+    error.backtrace.each_with_index do |line, index|
+      lines << "#{index + 1}: #{line}"
+    end
+
+    lines.join("\n")
+  end
+  private_class_method :format_backtrace
 end
