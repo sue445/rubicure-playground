@@ -12,7 +12,7 @@ GEM
       mutex_m
       tzinfo (~> 2.0)
     base64 (0.2.0)
-    bigdecimal (3.1.6)
+    bigdecimal (3.1.7)
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     diff-lcs (1.5.1)
@@ -59,7 +59,7 @@ GEM
       sengiri_yaml (>= 1.0.0)
     ruby2_keywords (0.0.5)
     sengiri_yaml (1.0.0)
-    sentry-ruby (5.17.1)
+    sentry-ruby (5.17.2)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
     sinatra (4.0.0)
