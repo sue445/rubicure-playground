@@ -108,7 +108,9 @@ RSpec.configure do |config|
 end
 
 def app
-  App
+  App.class_eval do
+    set :host_authorization, { permitted_hosts: [] }
+  end
 end
 
 def spec_dir
