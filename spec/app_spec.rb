@@ -90,7 +90,7 @@ RSpec.describe App do
         RUBY
       end
 
-      its([0]) { should be_start_with %q(NameError: undefined local variable or method `aaaa' for ) }
+      its([0]) { should be_start_with %q(NameError: undefined local variable or method 'aaaa' for an instance of Object) }
       its([1]) { should eq true }
     end
   end
