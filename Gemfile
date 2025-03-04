@@ -7,6 +7,7 @@ gem "rubicure", ">= 3.2.2"
 gem "sentry-ruby"
 gem "sinatra"
 gem "slim"
+gem "uri", ">= 1.0.3"
 
 group :development do
   gem "rack-unreloader", require: false
