@@ -95,7 +95,7 @@ jobs:
           status: ${{ job.status }}
           webhook-url: ${{ secrets.SLACK_WEBHOOK }}
 
-  all-pass-test:
+  all-pass:
     if: always()
 
     needs:
