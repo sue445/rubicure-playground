@@ -24,7 +24,7 @@ permissions:
   id-token: write
 
 jobs:
-  test:
+  unit_test:
     runs-on: ubuntu-latest
 
     steps:
@@ -104,7 +104,7 @@ jobs:
     if: always()
 
     needs:
-      - test
+      - unit_test
       - build_and_push
 
     runs-on: ubuntu-slim
@@ -118,7 +118,7 @@ jobs:
   deploy_to_cloud_run:
     needs:
       - build_and_push
-      - test
+      - unit_test
 
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
 
