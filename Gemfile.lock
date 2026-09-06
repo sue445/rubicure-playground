@@ -62,7 +62,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-support (3.13.6)
-    rubicure (4.2.1)
+    rubicure (4.2.2)
       activesupport (>= 5.0.0)
       hashie (>= 2.0.5)
       sengiri_yaml (>= 1.0.0)
@@ -139,7 +139,7 @@ CHECKSUMS
   rspec-its (2.0.0) sha256=a88e8bc38149f2835e93533591ec4f5c829aacbfd41269a2e6f9f5b82f5260df
   rspec-mocks (3.13.6) sha256=78b137ae5e91c5072bf81d40d78189aa911e965a81adc245e2d8d9ba624d9b4e
   rspec-support (3.13.6) sha256=2e8de3702427eab064c9352fe74488cc12a1bfae887ad8b91cba480ec9f8afb2
-  rubicure (4.2.1) sha256=ff3c7ab949db2cf2784ff45bd665286ad9ed7d754929d6c4995bc57a5ed88adc
+  rubicure (4.2.2) sha256=775ea9bdc46aeb9a098f129e71ca9c6e43731693a1363d67db455036c8422344
   ruby2_keywords (0.0.5) sha256=ffd13740c573b7301cf7a2e61fc857b2a8e3d3aff32545d6f8300d8bae10e3ef
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   sengiri_yaml (1.0.2) sha256=2993466998af1afc082bcc9677d5c5a5b9ba683746e0446cde910c89b3a8040c
