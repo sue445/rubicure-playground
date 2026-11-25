@@ -71,7 +71,7 @@ GEM
       sengiri_yaml (>= 1.0.0)
     securerandom (0.4.1)
     sengiri_yaml (1.0.2)
-    sentry-ruby (7.2.0)
+    sentry-ruby (7.3.0)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
       logger
@@ -148,7 +148,7 @@ CHECKSUMS
   rubicure (4.2.3) sha256=dcab7e7a4c5089922c29cf5bec7e208d370335d284233819873f431b2ec81f01
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   sengiri_yaml (1.0.2) sha256=2993466998af1afc082bcc9677d5c5a5b9ba683746e0446cde910c89b3a8040c
-  sentry-ruby (7.2.0) sha256=2da448c2b7028a7691f31ae5c946830b8e694d0aec78ef2b9e5c7e1da9c3e01a
+  sentry-ruby (7.3.0) sha256=b097f082e6609c778ca3ac28fa61ce38af998040e042660ff7196fcdcad9f1a4
   sinatra (4.2.2) sha256=3a0e63c600eb65d7ad6fa0d597a9533f2870d1862cc63ab7b0f7f0ad449ad42f
   slim (5.2.2) sha256=d1b5a575fcfa904a5eb66ec0a8f48a2363c7b9c57d50debb42dbab31524ef5e3
   temple (0.10.4) sha256=b7a1e94b6f09038ab0b6e4fe0126996055da2c38bec53a8a336f075748fff72c
